@@ -23,13 +23,14 @@ function decodeToken(req, res, next) {
         if(payload.exp <= moment().unix()){
             return res
             .status(401)
-            .send({ status: 401, messege: 'The token has expired'})
+            .send({ status: 401, message: 'The token has expired'})
         }
+        next()
     }
     catch(err){
         return res
         .status(500)
-        .send({status: 500, messege: 'Incorrect token', err})
+        .send({status: 500, message: 'Incorrect token', err})
     }
 }
 
