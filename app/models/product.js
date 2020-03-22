@@ -3,6 +3,10 @@ const Schema = moongose.Schema
 
 const ProductSchema = new Schema (
     {
+        _id: {
+            type: Number,
+            require: true
+        },
         tittle: {
             type: String,
             require: true

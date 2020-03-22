@@ -32,8 +32,31 @@ const insertProduct = (req, res) => {
     })
 }
 
+// Upsert product method 
+const upsertProduct = (req, res) => {
+    Product.updateOne({ _id: req.params.id  }, { ...req.body }, err => {
+        if (err)
+        res.send({
+          msg: `Cant't upsert the product ${req.params.id}`,
+          error: err
+        })
+        res.send({ msg: 'Product upserted' })
+    })
+}
+
+// Remove product method
+const removeProduct = (req, res) => {
+    Product.findOneAndDelete({ _id: req.params.id } ,(err, doc) => {
+        if (err) return res.status(500).send(err)
+        res.status(200).send(doc)
+    })
+}
+
+
 module.exports = {
     getAll,
     getById,
-    insertProduct
+    insertProduct,
+    upsertProduct,
+    removeProduct
 }
