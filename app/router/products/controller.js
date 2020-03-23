@@ -20,6 +20,7 @@ const getById = (req, res) => {
 // Insert product method
 const insertProduct = (req, res) => {
     const product = new Product ({
+        _id: req.body._id,
         tittle: req.body.tittle,
         description: req.body.description,
         availableSize: req.body.availableSize,

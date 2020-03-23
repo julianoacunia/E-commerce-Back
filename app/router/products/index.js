@@ -8,9 +8,9 @@ const { getAll, getById, insertProduct, upsertProduct, removeProduct } = control
 router.use(express.json())
 
 router.get('/', getAll)
-router.get('/:id', functions.decodeToken, getById)
-router.post('/', functions.decodeToken, insertProduct)
-router.put('/:id', functions.decodeToken, upsertProduct)
-router.delete('/:id', functions.decodeToken, removeProduct)
+router.get('/:id', getById)
+router.post('/', insertProduct)
+router.put('/:id', upsertProduct)
+router.delete('/:id', removeProduct)
 
 module.exports = router
