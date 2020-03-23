@@ -11,6 +11,22 @@ const getAll = (req, res) => {
     })
 }
 
+// Insert user method
+const insertUser = (req, res) => {
+    const user = new User ({
+        name: req.body.name,
+        email: req.body.email,
+        password: req.body.password,
+        address: req.body.address
+    })
+    user.save(err => {
+        if (err) res.send({ msg: 'Cant`t save the user', error: err })
+        res.send({ msg: 'account saved' })
+    })
+}
+
+
 module.exports = {
-    getAll
+    getAll,
+    insertUser
 }
